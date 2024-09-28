@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/select.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/00b9b44f9f.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Fisheye - photographe</title>
+  </head>
+
+  <body>
+    <header>
+      <a href="index.html"
+        ><img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Logo du site Fisheye"
+          aria-label="Logo du site Fisheye"
+      /></a>
+    </header>
+    <main id="main-wrapper">
+      <div class="photograph-header" aria-label="Profil du photographe"></div>
+
+      <div
+        class="tri"
+        aria-label="Tri des medias par popularité, titre ou date"
+      >
+        <label for="select_button">Trier par</label>
+        <div style="width: 200px" class="">
+          <select id="select_button" onchange="trier_gallery(this.value)">
+            <option value="0">Choix du filtre</option>
+            <option value="popularity" aria-label="Tri par popularité">
+              popularité
+            </option>
+            <option value="title" aria-label="Tri par titre">titre</option>
+            <option value="date" aria-label="Tri par date">date</option>
+          </select>
+        </div>
+      </div>
+      <div id="encart"></div>
+      <div id="media-gallery" aria-label="Media du photographe"></div>
+    </main>
+
+    <div
+      id="image_modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-describedby="Media en plein écran"
+    >
+      <div class="modal2">
+        <div class="close_image">
+          <button>
+            <img
+              class="modalCloseBtn"
+              src="assets/icons/close.svg"
+              onclick="close_image()"
+              aria-label="Fermeture du media"
+              alt="Bouton de fermeture du media"
+            />
+          </button>
+        </div>
+        <div id="src_media"></div>
+        <button
+          id="right_button"
+          aria-label="Voir le media suivant"
+          onclick="right_media()"
+        >
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button
+          id="left_button"
+          aria-label="Voir le media precedent"
+          onclick="left_media()"
+        >
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="contact_modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="Formulaire de contact avec vos coordonnees"
+    >
+      <div class="modal">
+        <header>
+          <div id="contact_text"></div>
+          <img
+            class="close_form"
+            src="assets/icons/close.svg"
+            onclick="closeModal()"
+            aria-label="Fermeture du formulaire de contact"
+            alt="Bouton de fermeture du formulaire de contact"
+          />
+        </header>
+
+        <form id="formId">
+          <div id="prenom" class="formData">
+            <label for="first">Votre prénom</label><br/>
+            <input
+              class="text-control"
+              type="text"
+              id="first"
+              name="first"
+              minlength="2"
+              aria-label="Champ prénom du formulaire"
+              aria-required="true"
+            /><br />
+          </div>
+
+          <div id="nom" class="formData">
+            <label for="last">Votre nom</label><br/>
+            <input
+              class="text-control"
+              type="text"
+              id="last"
+              name="last"
+              aria-label="Champ nom du formulaire"
+              aria-required="true"
+            /><br />
+          </div>
+
+          <div id="adressemail" class="formData">
+            <label for="email">Votre e-mail</label><br/>
+            <input
+              class="text-control"
+              type="email"
+              id="email"
+              name="email"
+              aria-label="Champ mail du formulaire"
+              aria-required="true"
+            /><br />
+          </div>
+
+          <div id="message" class="formData">
+            <label for="textarea">Votre message</label><br/>
+            <textarea
+              aria-label="Champ message du formulaire"
+              aria-required="true"
+              id="textarea"
+              name="textarea"
+            >
+            </textarea>
+          </div>
+
+          <input
+            class="contact_button"
+            type="submit"
+            class="button"
+            value="Envoyer"
+            aria-label="Envoyer le formulaire"
+            onclick="formulaire()"
+          />
+        </form>
+      </div>
+    </div>
+    <script src="scripts/pages/select.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
+    <script src="scripts/templates/photographer.js"></script>
+    <script src="scripts/utils/contactForm.js"></script>
+    <script src="scripts/pages/lightbox.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
