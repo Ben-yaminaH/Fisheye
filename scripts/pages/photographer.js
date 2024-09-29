@@ -167,7 +167,7 @@ function createMediaElement(media, name, numero) {
 
   }
 
-  mediaElement.setAttribute("aria-label", "le nom du media est ")
+  mediaElement.setAttribute("aria-label", "le nom du media est "+title.textContent)
 
   mediaElement.id = "media" + numero;
 
@@ -180,9 +180,11 @@ function createMediaElement(media, name, numero) {
 
   // lien pour ouverture de la lightbox
 
-  container.tabIndex = 0;
+  mediaElement.tabIndex = 0;
+  likes_div.tabIndex = 0;
+  likes_div.setAttribute("aria-label", "Cliquer pour ajouter un j'aime à cette photographie");
 
-  container.addEventListener('keydown', function () {
+  mediaElement.addEventListener('keydown', function () {
 
     if (event.keyCode === 13) {
       display_image(mediaElement.src, type, numero, title.textContent)
@@ -220,6 +222,30 @@ function createMediaElement(media, name, numero) {
 
 
   }, false);
+
+
+
+  likes_div.addEventListener('keydown', function () {
+
+    if (event.keyCode === 13) {
+      if (check_coeur(numero) == "0") {
+        somme_like = somme_like + 1;
+  
+        document.getElementById("like_text" + numero).textContent = media.likes + 1;
+        document.getElementById("encart").innerHTML = "<div>" + somme_like + " <i class='fa-solid fa-heart' aria-hidden='true'></i> </div><div>" + price + "€/jour</div>";
+  
+        document.getElementById("coeur" + numero).innerHTML = '<i class="fa-solid fa-heart" aria-hidden="true"></i>';
+        // console.log(check_coeur(numero));
+      } else { }
+
+
+    }
+
+
+  });
+
+
+
 }
 
 
